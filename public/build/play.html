@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>寿司打 - Play </title>
+<link rel="icon" href="https://sushida.net/img/favicon.ico">
+<!-- <link href="css/play.css" rel="stylesheet" type="text/css">
+ -->
+
+<script src="./UnityLoader.js?1126"></script>
+<script>
+	function game() {
+    var gameInstance = UnityLoader.instantiate("gameContainer", "./Web.json", {
+      Module: {
+        print: (text) => console.log("Module: "+text),
+        printErr: (text) => console.error(text)
+      }
+  });
+	  document.getElementsByTagName('canvas')[0].ondragstart = function() { return false; };
+	}
+</script>
+
+<style>
+  @charset "utf-8";
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-color: #D9DCCA;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+a {
+color:#5DCDC3;
+}
+
+a:hover {
+color:#5DCDC3;
+}
+
+a:visited {
+color:#5DCDC3;
+}
+
+#contents{
+	margin: 0px auto;
+	padding: 0px;
+	width: 760px;
+	background-image: url("../img/bg.gif");
+	overflow:auto;
+	color: #FFFFFF;
+}
+
+#main{
+	margin: 3px 10px 3px 3px;
+	padding-bottom: 40px;
+	width: 744px;
+	background-color: #000000;
+}
+
+#game{
+	margin: 0px auto;
+	padding: 0px;
+	padding-top: 70px;
+	width: 500px;
+}
+
+.ex{
+	margin: 0px auto;
+	padding: 6px;
+	width: 500px;
+	text-align: right;
+}
+
+.ad_728{
+	margin: 30px auto;
+	margin-bottom: 40px;
+	padding: 0px;
+	width: 728px;
+	height: 90px;
+}
+
+.img_line{
+	margin: 0px auto;
+	padding: 0px;
+	width: 728px;
+	height: 25px;
+}
+
+.info{
+	margin: 0px auto;
+	padding: 20px;
+	width: 600px;
+	background-color: #555;
+	font-size: 13px;
+	line-height: 24px;
+	border-radius: 6px;
+	color: #CCC;
+}
+</style>
+</head>
+
+<body onload="game()">
+  <!-- <div class="webgl-content">
+    <div id="gameContainer" style="width: 500px; height: 420px; color:#555;"></div>
+  </div> -->
+  <div id="contents">
+    <div id="main">
+      <div id="game">
+        <div class="webgl-content">
+            <div id="gameContainer" style="width: 500px; height: 420px; color:#555;"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
