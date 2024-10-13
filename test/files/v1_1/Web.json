@@ -1,0 +1,20 @@
+{
+  "companyName": "Neutralx0.net",
+  "productName": "SushiDa",
+  "dataUrl": "Web.data.unityweb",
+  "wasmCodeUrl": "Web.wasm.code.unityweb",
+  "wasmFrameworkUrl": "Web.wasm.framework.unityweb",
+  "asmCodeUrl": "Web.asm.code.unityweb",
+  "asmMemoryUrl": "Web.asm.memory.unityweb",
+  "asmFrameworkUrl": "Web.asm.framework.unityweb",
+  "TOTAL_MEMORY": 268435456,
+  "graphicsAPI": [
+    "WebGL 2.0",
+    "WebGL 1.0"
+  ],
+  "webglContextAttributes": {
+    "preserveDrawingBuffer": false
+  },
+  "splashScreenStyle": "Dark",
+  "backgroundColor": "#000000"
+}
