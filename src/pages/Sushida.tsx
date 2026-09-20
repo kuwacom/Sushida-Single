@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import Unity from 'react-unity-webgl';
 
 // 型定義
 declare global {
@@ -14,19 +13,11 @@ declare global {
 let init = false;
 
 function Sushida() {
-  // return (
-  //   <>
-  //     <h1>test</h1>
-  //     <Unity src="build/Web.json" loader="build/UnityLoader.js?1126" />
-  //   </>
-  // );
-
   const gameContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (init) return;
     init = true;
-    console.log('testset');
     // UnityLoader と UnityProgress スクリプトをロード
     const loadScripts = async () => {
       const scriptUnityLoader = document.createElement('script');
