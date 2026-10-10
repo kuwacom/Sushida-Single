@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>🍣寿司打</title>
-    <link rel="icon" href="assets/icon.png" />
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABJklEQVQ4jaWTP0sDQRDFf5EtJpBiDyKkNdiktLDwawQsjJ8vEZSkSW1tYWGnjWCZQALZInADHoyF5yV7e2ehA1vsvLePN3+2Y2bGP8I1JRcPi0by+HqcJq0W8/t5PfUrRhvhEaqzupm0ipwcu5kvp43WX+9mrZzOcROz0y67TQ7AenIbEQezacnJ2G12zT1AMOklbTGz3MzMfF8MifF4Ck7ACcPRkKvLiwh6en5B98qg79tL6GYZ4hRxAkAIgbPzEQCr7QrdK1oolh9WJ2oiAAWstwEttHr88f6GFuD7HunFDlIBJ3gv1UOgElLVhJ4IhBDQvYLGDgC0AN2GdgEN36A4UPGJgx+sVcDMoDjc6w4A8s/47yUlmBlaitQd5McLVEY0xr/EFzeCHaX1fTtRAAAAAElFTkSuQmCC" />
   
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="🍣寿司打 - kuwa.dev">
@@ -18,7 +18,41 @@
   
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- 48MBのバンドル解析中も真っ白にならないよう、React初期化前の置き画を置く -->
+      <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: 'Meiryo', sans-serif; color: #555;">
+        NOW LOADING...
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // file:// 直接起動時に真っ白のまま原因が分からなくならないよう自己診断する
+      window.__bootErrors = [];
+      window.addEventListener('error', function (e) {
+        window.__bootErrors.push(String((e && e.message) || e));
+      });
+      window.addEventListener('unhandledrejection', function (e) {
+        window.__bootErrors.push(String((e && e.reason) || e));
+      });
+      setTimeout(function () {
+        var root = document.getElementById('root');
+        var booted = document.querySelector('canvas') !== null;
+        var rootText = root ? root.textContent || '' : '';
+        var rootBusy = root !== null && root.children.length > 0 && rootText.indexOf('NOW LOADING') < 0;
+        if (booted || rootBusy) return;
+        var info = [
+          '起動が完了していません(自己診断)',
+          'UA: ' + navigator.userAgent,
+          '捕捉エラー: ' + (window.__bootErrors.join(' | ') || 'なし'),
+          'root子要素: ' + (root ? root.children.length : 'root無し'),
+          'script数: ' + document.scripts.length
+        ];
+        var pre = document.createElement('pre');
+        pre.style.cssText =
+          'margin:24px;padding:16px;background:#fff;color:#c0392b;font:13px monospace;white-space:pre-wrap;border:2px solid #c0392b;border-radius:8px';
+        pre.textContent = info.join('\n');
+        document.body.appendChild(pre);
+      }, 10000);
+    </script>
   </body>
 </html>

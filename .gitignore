@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# 一時的な解析スクリプト・スクリーンショット置き場
+_analysis
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

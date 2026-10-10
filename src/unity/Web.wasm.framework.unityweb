@@ -9330,13 +9330,9 @@ function copyTempDouble(ptr) {
 
   function _openWindow(link) {
           var url = Pointer_stringify(link);
-          document.onmouseup = function () {
+          document.onpointerup = function () {
               window.open(url);
-              document.onmouseup = null;
-          }
-          document.ontouchend = function() {
-              window.open(url);
-              document.ontouchend = null;
+              document.onpointerup = null;
           }
       }
 
